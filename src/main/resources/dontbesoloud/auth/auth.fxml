@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER"
+      spacing="15.0"
+      prefWidth="400.0"
+      xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      styleClass="main-container"
+      stylesheets="auth.css"
+      fx:controller="dontbesoloud.auth.AuthController">
+    <padding>
+        <Insets bottom="30.0" left="40.0" right="40.0" top="30.0"/>
+    </padding>
+
+    <Label fx:id="titleLabel" text="Авторизация">
+        <font>
+            <Font name="System Bold" size="26.0"/>
+        </font>
+    </Label>
+
+    <GridPane vgap="10" hgap="10" alignment="CENTER">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES"
+                               minWidth="10.0"
+                               prefWidth="80.0"/>
+            <ColumnConstraints hgrow="ALWAYS" minWidth="10.0"/>
+        </columnConstraints>
+
+        <Label fx:id="nameLabel"
+               text="Имя:"
+               GridPane.rowIndex="0"
+               visible="false"
+               managed="false"/>
+        <TextField fx:id="nameField"
+                   promptText="Введите ваше имя"
+                   GridPane.columnIndex="1"
+                   GridPane.rowIndex="0"
+                   visible="false"
+                   managed="false"/>
+
+        <Label text="Email:" GridPane.rowIndex="1"/>
+        <TextField fx:id="emailField"
+                   promptText="example@mail.com"
+                   GridPane.columnIndex="1"
+                   GridPane.rowIndex="1"/>
+
+        <Label text="Пароль:" GridPane.rowIndex="2"/>
+        <PasswordField fx:id="passwordField"
+                       promptText="••••••••"
+                       GridPane.columnIndex="1"
+                       GridPane.rowIndex="2"/>
+
+        <Label fx:id="passwordSubmitLabel"
+               text="Подтвердите пароль:"
+               GridPane.rowIndex="3"/>
+        <PasswordField fx:id="passwordSubmitField"
+                       promptText="••••••••"
+                       GridPane.columnIndex="1"
+                       GridPane.rowIndex="3"/>
+    </GridPane>
+
+    <VBox spacing="10.0" alignment="CENTER">
+        <Button fx:id="mainButton" text="Войти" onAction="#submitAction"
+                maxWidth="Infinity" prefHeight="35.0"
+                style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-cursor: hand;"/>
+
+        <Hyperlink fx:id="switchLink"
+                   text="Нет аккаунта? Зарегистрироваться"
+                   onAction="#toggleAuth"/>
+    </VBox>
+</VBox>
