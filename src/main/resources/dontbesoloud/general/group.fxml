@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefWidth="270.0" spacing="10.0" styleClass="group-card"
+      stylesheets="@group.css" xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="dontbesoloud.general.GroupController"
+      onMouseClicked="#onClick"
+>
+    <padding>
+        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+    </padding>
+
+    <StackPane style="-fx-background-color: #f0f0f0; -fx-background-radius: 5;">
+        <ImageView fx:id="groupImage"
+                   fitHeight="140.0"
+                   fitWidth="210.0"
+                   pickOnBounds="true"
+        />
+    </StackPane>
+
+    <VBox spacing="8.0" VBox.vgrow="ALWAYS">
+        <Label fx:id="titleLabel"
+               style="-fx-font-weight: bold; -fx-font-size: 16px;"
+               text="Название группы"
+               wrapText="true"/>
+
+        <VBox spacing="5.0">
+            <HBox alignment="CENTER_RIGHT">
+                <Label fx:id="percentLabel" text="0%" style="-fx-font-size: 12px;"/>
+            </HBox>
+            <ProgressBar fx:id="progressBar"
+                         maxWidth="Infinity"
+                         progress="0.0"
+                         prefHeight="8.0"/>
+        </VBox>
+    </VBox>
+</VBox>

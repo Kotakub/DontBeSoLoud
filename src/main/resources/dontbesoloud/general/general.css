@@ -1,0 +1,10 @@
+.button{
+    -fx-background-color: white;
+    -fx-background-radius: 12;
+    -fx-border-color: #eef0f2;
+    -fx-border-radius: 12;
+    -fx-cursor: hand;
+    -fx-transition: all 0.3s;
+    -fx-font-size: 28px;
+
+}

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="dontbesoloud.general.LessonsController">
+
+    <left>
+        <VBox minWidth="200" maxWidth="200" alignment="CENTER">
+            <Button text="УДАЛИТЬ" onAction="#deleteLesson"/>
+
+            <Region VBox.vgrow="ALWAYS"/>
+
+            <Button text="НАЗАД" onAction="#prevLesson"/>
+        </VBox>
+    </left>
+
+
+    <center>
+        <StackPane>
+            <GridPane fx:id="selectionLayer">
+                <columnConstraints>
+                    <ColumnConstraints hgrow="ALWAYS"
+                                       halignment="CENTER"
+                                       percentWidth="50"/> <!--text + photo-->
+                    <ColumnConstraints hgrow="ALWAYS"
+                                       halignment="CENTER"
+                                       percentWidth="50"/> <!--camera + check-->
+                </columnConstraints>
+
+                <!--text + photo-->
+                <VBox onMouseClicked="#showTheoryLayer"
+                      GridPane.columnIndex="0"
+                      alignment="CENTER"
+                      minHeight="200"
+                      style="-fx-background-color: red;"
+                >
+                    <Label>Теория</Label>
+                </VBox>
+
+
+                <!--camera + check-->
+                <VBox onMouseClicked="#showCameraLayer"
+                      GridPane.columnIndex="1"
+                      alignment="CENTER"
+                >
+                    <Label>Практика</Label>
+                </VBox>
+
+            </GridPane>
+
+
+            <VBox fx:id="theoryLayer" visible="false" managed="false">
+                <ImageView fitHeight="350" fitWidth="450" preserveRatio="true"/>
+                <TextArea fx:id="theoryText"
+                          editable="false"
+                          wrapText="true"
+                          prefWidth="300"
+                          style="-fx-background-radius: 10; -fx-font-size: 14px;"
+                          text="Здесь будет текстовое описание того, как правильно выполнять жест..."
+                />
+            </VBox>
+
+
+            <VBox fx:id="cameraLayer" visible="false" managed="false" alignment="CENTER">
+                <ImageView fx:id="cameraView" fitHeight="350" fitWidth="500" preserveRatio="true"/>
+                <HBox alignment="CENTER">
+                    <Label text="Распознанный жест: " style="-fx-font-size: 16px;"/>
+                    <TextField editable="false" prefWidth="250"
+                               style="-fx-background-radius: 10; -fx-font-weight: bold; -fx-text-fill: #2196F3;"
+                               text="Ожидание..."/>
+                </HBox>
+            </VBox>
+
+            <VBox fx:id="loadPhoto" visible="false" managed="false">
+                <VBox>
+                </VBox>
+            </VBox>
+
+            <VBox fx:id="editText" visible="false" managed="false">
+                <VBox>
+                </VBox>
+            </VBox>
+
+        </StackPane>
+    </center>
+
+
+    <right>
+        <VBox minWidth="200" maxWidth="200" alignment="CENTER">
+            <Button text="СОХРАНИТЬ" onAction="#saveLesson"/>
+
+            <Region VBox.vgrow="ALWAYS"/>
+
+            <Button text="ВПЕРЕД" onAction="#nextLesson"/>
+        </VBox>
+    </right>
+</BorderPane>

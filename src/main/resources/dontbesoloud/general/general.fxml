@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml/1"
+           xmlns="http://javafx.com/javafx/17"
+           fx:controller="dontbesoloud.general.GeneralController"
+           stylesheets="@general.css"
+
+>
+    <GridPane>
+        <columnConstraints>
+            <ColumnConstraints hgrow="NEVER" minWidth="250.0" maxWidth="250.0"/> <!--sidebar-->
+            <ColumnConstraints hgrow="ALWAYS" halignment="LEFT"/> <!--groups-->
+        </columnConstraints>
+        
+        <rowConstraints>
+            <RowConstraints vgrow="ALWAYS"/>
+        </rowConstraints>
+
+
+        <!--Sidebar-->
+        <fx:include GridPane.columnIndex="0" source="../sidebar/sidebar.fxml"/>
+
+        <!--Groups-->
+        <ScrollPane fitToWidth="true"
+                    hbarPolicy="NEVER"
+                    GridPane.columnIndex="1"
+        >
+            <FlowPane fx:id="groupsContainer" hgap="20.0" vgap="20.0">
+                <padding>
+                    <Insets bottom="25.0" left="25.0" right="25.0" top="25.0"/>
+                </padding>
+                <Button styleClass="add-button"
+                        prefWidth="270"
+                        prefHeight="220"
+                        text="+"
+                        onAction="#addNewGroup"
+                />
+            </FlowPane>
+        </ScrollPane>
+    </GridPane>
+    <VBox fx:id="modalOverlay"
+          visible="false"
+          alignment="CENTER"
+          style="-fx-background-color: rgba(0, 0, 0, 0.7);">
+        <VBox maxWidth="450"
+              maxHeight="500"
+              spacing="20"
+              alignment="CENTER"
+
+              style="-fx-background-color: white; -fx-background-radius: 20; -fx-padding: 40;">
+
+            <VBox alignment="CENTER"
+                  spacing="12"
+                  VBox.vgrow="ALWAYS">
+                <StackPane style="-fx-background-color: #f8f9fa; -fx-background-radius: 15; -fx-border-color: #ddd; -fx-border-radius: 15; -fx-border-style: dashed;">
+                    <ImageView fx:id="groupImage"
+                               fitHeight="150"
+                               fitWidth="250"
+                               preserveRatio="true"/>
+                    <Button text="Выбрать фото" onAction="#сhooseImage"
+                            style="-fx-background-color: white; -fx-border-color: #2196F3; -fx-border-radius: 5; -fx-text-fill: #2196F3;"/>
+                </StackPane>
+            </VBox>
+
+            <VBox spacing="8">
+                <TextField fx:id="groupNameField" promptText="Например: Основы жестового языка"
+                           style="-fx-background-radius: 10; -fx-padding: 10;"/>
+            </VBox>
+
+
+            <HBox spacing="20" alignment="CENTER" style="-fx-padding: 10 0 0 0;">
+                <Button text="Удалить" onAction="#deleteGroup"
+                        style="-fx-background-color: #fff0f0; -fx-text-fill: #d32f2f; -fx-border-color: #d32f2f; -fx-border-radius: 8; -fx-padding: 10 25;"/>
+                <Button text="Сохранить" onAction="#saveGroup"
+                        style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 10 25;"/>
+            </HBox>
+        </VBox>
+    </VBox>
+
+</StackPane>

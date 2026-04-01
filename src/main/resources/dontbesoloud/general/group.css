@@ -1,0 +1,17 @@
+.group-card {
+    -fx-background-color: white;
+    -fx-background-radius: 12;
+    -fx-border-color: #eef0f2;
+    -fx-border-radius: 12;
+    -fx-cursor: hand;
+    -fx-transition: all 0.3s;
+}
+
+.group-card:hover {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.15), 15, 0, 0, 8);
+    -fx-translate-y: -5; /* Эффект «всплытия» при наведении */
+}
+
+.progress-bar .bar {
+    -fx-background-color: #4CAF50; /* Зеленый прогресс */
+}

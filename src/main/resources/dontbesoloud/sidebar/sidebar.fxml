@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox fx:id="sidebarContainer"
+      prefWidth="250.0"
+      maxWidth="250.0"
+      spacing="10.0"
+      styleClass="sidebar"
+      stylesheets="@sidebar.css"
+      xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="dontbesoloud.sidebar.SidebarController"
+      alignment="CENTER"
+
+>
+
+    <padding>
+        <Insets top="40.0" bottom="20.0" left="15.0" right="15.0"/>
+    </padding>
+
+    <Label text="DontBeSoLoud" styleClass="sidebar-logo"/>
+
+    <Region VBox.vgrow="ALWAYS"/> <!--Отступ-->
+
+    <Button fx:id="btnGeneral" text="Главная"
+            maxWidth="Infinity" styleClass="sidebar-button"/>
+
+    <Button fx:id="btnVideo" text="Видеозвонок"
+            maxWidth="Infinity" styleClass="sidebar-button"/>
+
+    <Region VBox.vgrow="ALWAYS"/> <!--Отступ-->
+
+    <Button fx:id="btnLogout" text="ВЫХОД"
+            maxWidth="Infinity" styleClass="sidebar-button, logout-button"/>
+
+</VBox>

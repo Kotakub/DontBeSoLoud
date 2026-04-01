@@ -1,0 +1,40 @@
+.sidebar {
+    -fx-background-color: #ffffff; /* Белый фон */
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 0 1 0 0; /* Только правая граница */
+}
+
+.sidebar-logo {
+    -fx-font-family: "UD Digi Kyokaho Std";
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+    -fx-alignment: center;
+}
+
+.sidebar-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #5f6368;
+    -fx-font-family: "UD Digi Kyokaho Std";
+    -fx-font-size: 15px;
+    -fx-padding: 12 15 12 15;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+}
+
+.sidebar-button:hover {
+    -fx-background-color: #f1f3f4;
+    -fx-text-fill: #1a73e8;
+}
+
+/* Стиль для активной кнопки (можно добавлять программно) */
+.sidebar-button.active {
+    -fx-background-color: #e8f0fe;
+    -fx-text-fill: #1967d2;
+    -fx-font-weight: bold;
+}
+
+.logout-button:hover {
+    -fx-background-color: #fdeaea;
+    -fx-text-fill: #d93025;
+}
