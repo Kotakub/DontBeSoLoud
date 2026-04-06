@@ -11,7 +11,7 @@
       xmlns="http://javafx.com/javafx/17"
       xmlns:fx="http://javafx.com/fxml/1"
       styleClass="main-container"
-      stylesheets="@auth.css"
+      stylesheets="@../main_style.css"
       fx:controller="dontbesoloud.auth.AuthController">
 
     <padding>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+
+<HBox xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="dontbesoloud.videocall.VideocallController"
+      stylesheets="@../main_style.css">
+    <fx:include source="../sidebar/sidebar.fxml"/>
+
+    <StackPane HBox.hgrow="ALWAYS">
+        <StackPane styleClass="image-holder">
+            <ImageView fx:id="previewCamera" fitHeight="400" fitWidth="600"
+                       preserveRatio="false"/>
+            <Button text="НАЧАТЬ ПОИСК" onAction="#startSearch"
+                    styleClass="main-button"/>
+        </StackPane>
+
+        <HBox fx:id="callLayer" visible="false" managed="false" spacing="30"
+              alignment="CENTER" style="-fx-padding: 20;">
+
+            <VBox spacing="15" alignment="TOP_CENTER" HBox.hgrow="ALWAYS">
+                <StackPane minHeight="350" minWidth="450"
+                           styleClass="image-holder">
+                    <Label fx:id="remotePlaceholder"
+                           text="ПОИСК СОБЕСЕДНИКА..."/>
+                    <ImageView fx:id="remoteCamera" fitHeight="350"
+                               fitWidth="450" preserveRatio="false"/>
+                </StackPane>
+
+                <HBox spacing="10" alignment="CENTER">
+                    <Button text="ЗАКОНЧИТЬ" onAction="#endCall"
+                            style="-fx-background-color: #ffcdd2;"/>
+                    <Button text="СЛЕДУЮЩИЙ" onAction="#nextPeer"
+                            style="-fx-background-color: #bbdefb;"/>
+                </HBox>
+
+                <Label fx:id="remoteMessageLabel"
+                       text="Сообщение появится здесь..." wrapText="true"
+                       maxWidth="400"
+                       style="-fx-background-color: #f0f0f0; -fx-padding: 10; -fx-background-radius: 10;"/>
+            </VBox>
+
+            <VBox spacing="15" alignment="TOP_CENTER" HBox.hgrow="ALWAYS">
+                <StackPane minHeight="350" minWidth="450"
+                           style="-fx-background-radius: 15;"
+                           styleClass="image-holder">
+                    <ImageView fx:id="localCamera" fitHeight="350"
+                               fitWidth="450" preserveRatio="true"/>
+                </StackPane>
+
+                <Button text="ВЫКЛЮЧИТЬ КАМЕРУ" onAction="#toggleCamera"
+                        maxWidth="200"/>
+
+                <VBox spacing="5" maxWidth="450">
+                    <HBox spacing="5">
+                        <TextField fx:id="chatInput"
+                                   promptText="Ваше сообщение..."
+                                   HBox.hgrow="ALWAYS"/>
+                        <Button text="Отправить" onAction="#sendChatMessage"/>
+                    </HBox>
+                    <Label fx:id="myLastMessage" text="Ваше последнее сообщение"
+                           style="-fx-text-fill: #888; -fx-font-size: 12;"/>
+                </VBox>
+            </VBox>
+        </HBox>
+    </StackPane>
+</HBox>

@@ -1,0 +1,55 @@
+/* Базовые настройки */
+.root {
+    -fx-background-color: #FFFFFF;
+    -fx-font-family: "Segoe UI", sans-serif;
+}
+
+/* Весь текст по умолчанию делаем темно-серым, чтобы он не пропадал на белом */
+.label {
+    -fx-text-fill: #2E3A2E;
+}
+
+/* --- КНОПКИ --- */
+.button, .main-button {
+    -fx-background-color: #81C784;
+    -fx-text-fill: white;
+    -fx-background-radius: 12;
+    -fx-font-weight: bold;
+    -fx-padding: 10 20;
+    -fx-cursor: hand;
+}
+
+.button:hover { -fx-background-color: #66BB6A; }
+
+/* Исправляем кнопку УДАЛИТЬ, чтобы текст не был белым на светлом фоне */
+#deleteButton, .logout-button {
+    -fx-background-color: #FFAB91;
+    -fx-text-fill: #4E342E;
+}
+
+/* --- ПОЛЯ ВВОДА --- */
+.text-field, .password-field, .text-area {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #C8E6C9;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-text-fill: #2E3A2E; /* Текст в полях ввода теперь темный */
+}
+
+/* --- РАМКИ ДЛЯ КАМЕР И ПРЕВЬЮ --- */
+.image-holder {
+    -fx-background-color: #F1F8E9; /* Очень светлый мятный фон, пока нет видео */
+    -fx-border-color: #81C784;
+    -fx-border-width: 2;
+    -fx-border-radius: 15;
+    -fx-background-radius: 15;
+    /* Убираем лишние отступы, чтобы картинка прилегала к краям */
+    -fx-padding: 0;
+    -fx-overflow: hidden;
+}
+
+/* Специальный стиль для текста заглушки внутри камеры */
+.image-holder .label {
+    -fx-text-fill: #388E3C;
+    -fx-font-weight: bold;
+}

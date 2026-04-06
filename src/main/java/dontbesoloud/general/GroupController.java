@@ -40,7 +40,7 @@ public class GroupController {
     private void onClick() {
 
         if (generalController != null && Main.isAdmin()) {
-            generalController.editGroup();
+            generalController.clickOnGroup();
         } else if (generalController != null && !Main.isAdmin()) {
             try {
                 Main.loadPage("/dontbesoloud/general/lessons.fxml");

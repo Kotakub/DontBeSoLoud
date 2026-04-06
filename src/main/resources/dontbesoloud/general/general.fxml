@@ -8,15 +8,14 @@
 <StackPane xmlns:fx="http://javafx.com/fxml/1"
            xmlns="http://javafx.com/javafx/17"
            fx:controller="dontbesoloud.general.GeneralController"
-           stylesheets="@general.css"
-
->
+           stylesheets="@../main_style.css">
     <GridPane>
         <columnConstraints>
-            <ColumnConstraints hgrow="NEVER" minWidth="250.0" maxWidth="250.0"/> <!--sidebar-->
+            <ColumnConstraints hgrow="NEVER" minWidth="250.0"
+                               maxWidth="250.0"/> <!--sidebar-->
             <ColumnConstraints hgrow="ALWAYS" halignment="LEFT"/> <!--groups-->
         </columnConstraints>
-        
+
         <rowConstraints>
             <RowConstraints vgrow="ALWAYS"/>
         </rowConstraints>
@@ -34,7 +33,9 @@
                 <padding>
                     <Insets bottom="25.0" left="25.0" right="25.0" top="25.0"/>
                 </padding>
-                <Button styleClass="add-button"
+                <Button fx:id="addButton" styleClass="add-button"
+                        visible="false"
+                        managed="false"
                         prefWidth="270"
                         prefHeight="220"
                         text="+"
@@ -57,7 +58,8 @@
             <VBox alignment="CENTER"
                   spacing="12"
                   VBox.vgrow="ALWAYS">
-                <StackPane style="-fx-background-color: #f8f9fa; -fx-background-radius: 15; -fx-border-color: #ddd; -fx-border-radius: 15; -fx-border-style: dashed;">
+                <StackPane
+                        style="-fx-background-color: #f8f9fa; -fx-background-radius: 15; -fx-border-color: #ddd; -fx-border-radius: 15; -fx-border-style: dashed;">
                     <ImageView fx:id="groupImage"
                                fitHeight="150"
                                fitWidth="250"
@@ -68,12 +70,14 @@
             </VBox>
 
             <VBox spacing="8">
-                <TextField fx:id="groupNameField" promptText="Например: Основы жестового языка"
+                <TextField fx:id="groupNameField"
+                           promptText="Например: Основы жестового языка"
                            style="-fx-background-radius: 10; -fx-padding: 10;"/>
             </VBox>
 
 
-            <HBox spacing="20" alignment="CENTER" style="-fx-padding: 10 0 0 0;">
+            <HBox spacing="20" alignment="CENTER"
+                  style="-fx-padding: 10 0 0 0;">
                 <Button text="Удалить" onAction="#deleteGroup"
                         style="-fx-background-color: #fff0f0; -fx-text-fill: #d32f2f; -fx-border-color: #d32f2f; -fx-border-radius: 8; -fx-padding: 10 25;"/>
                 <Button text="Сохранить" onAction="#saveGroup"

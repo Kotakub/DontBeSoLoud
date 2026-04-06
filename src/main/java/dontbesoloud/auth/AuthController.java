@@ -68,6 +68,11 @@ public class AuthController {
                 showError("");
             }
         }
+        try {
+            Main.loadPage("/dontbesoloud/general/general.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -86,8 +91,8 @@ public class AuthController {
         } else {
             authError.setText(errorText);
         }
-        authError.setVisible(false);
-        authError.setManaged(false);
+        authError.setVisible(true);
+        authError.setManaged(true);
 
     }
 

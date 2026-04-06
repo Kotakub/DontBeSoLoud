@@ -17,10 +17,10 @@ module dontbesoloud {
 
     opens dontbesoloud to javafx.fxml;
     opens dontbesoloud.auth to javafx.fxml;
-
     opens dontbesoloud.general to javafx.fxml;
     opens dontbesoloud.sidebar to javafx.fxml;
     opens dontbesoloud.utils to javafx.fxml;
+    opens dontbesoloud.videocall to javafx.fxml;
 
     exports dontbesoloud;
 }

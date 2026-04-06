@@ -5,11 +5,11 @@ import java.util.*;
 public class Group {
     public int id;
     public String name;
-    public List<Lesson> lessons;
+    public String photo_url;
 
-    public Group(int id, String name, List<Lesson> lessons) {
+    public Group(int id, String name, String photo_url) {
         this.id = id;
         this.name = name;
-        this.lessons = lessons;
+        this.photo_url = photo_url;
     }
 }

@@ -36,8 +36,8 @@ public class AuthApiService {
 
         } catch (Exception e) {
             System.err.println("Ошибка при проверке токена: " + e.getMessage());
-            return false;
         }
+        return false;
     }
 
     public String authorization(String email, String password) {
@@ -66,13 +66,13 @@ public class AuthApiService {
                 return root.get("access_token").asText();
             } else {
                 System.err.println("Ошибка авторизации: Код " + response.statusCode());
-                return "";
             }
 
         } catch (Exception e) {
             System.err.println("Ошибка при выполнении запроса: " + e.getMessage());
-            return "";
+
         }
+        return "";
     }
 
     public String registration(String name, String email, String password) {
@@ -102,13 +102,13 @@ public class AuthApiService {
                 return root.get("access_token").asText();
             } else {
                 System.err.println("Ошибка авторизации: Код " + response.statusCode());
-                return "";
+
             }
 
         } catch (Exception e) {
             System.err.println("Ошибка при выполнении запроса: " + e.getMessage());
-            return "";
         }
+        return "";
     }
 
     public boolean isAdmin(String token) {
@@ -131,11 +131,11 @@ public class AuthApiService {
             if (response.statusCode() == 200 && role.equals("admin")) {
                 return true;
             }
-            return false;
+
 
         } catch (Exception e) {
             System.err.println("Ошибка при получении роли: " + e.getMessage());
-            return false;
         }
+        return false;
     }
 }

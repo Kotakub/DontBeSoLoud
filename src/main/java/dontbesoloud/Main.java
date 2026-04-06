@@ -15,6 +15,8 @@ public class Main extends Application {
     private static Stage stage;
     private static Preferences prefs = Preferences.userNodeForPackage(Main.class);
     private static AuthApiService apiService = new AuthApiService();
+    private static Object currentController; // Храним текущий контроллер здесь
+
 
     @Override
     public void start(Stage stg) throws IOException {
@@ -33,7 +35,8 @@ public class Main extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(fxml));
         Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
 
-        // Вот здесь мы снова используем название!
+        currentController = fxmlLoader.getController();
+
         stage.setTitle("DontBeSoLoud");
         stage.setScene(scene);
         stage.show();
@@ -41,12 +44,29 @@ public class Main extends Application {
         return fxmlLoader;
     }
 
+    public static Object getCurrentController() {
+        return currentController;
+    }
+
+    public static Stage getStage() {
+        return stage;
+    }
+
     public static void saveToken(String token) {
         prefs.put("jwt_token", token);
     }
 
+    public static void deleteToken() {
+        prefs.put("jwt_token", "");
+    }
+
+    public static String getToken() {
+        return prefs.get("jwt_token", null);
+    }
+
     public static boolean isAdmin() {
-        return apiService.isAdmin(prefs.get("jwt_token", null));
+        return true;
+//        return apiService.isAdmin(prefs.get("jwt_token", null));
     }
 
     public static void main(String[] args) {
