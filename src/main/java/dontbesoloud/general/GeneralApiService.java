@@ -109,10 +109,6 @@ public class GeneralApiService {
         sendPostRequest("/general/save_group", group);
     }
 
-    public void editGroup(Group group) {
-        sendPostRequest("/general/edit_group", group);
-    }
-
     public void deleteGroup(int groupId) {
         String token = Main.getToken();
         try {
@@ -154,7 +150,6 @@ public class GeneralApiService {
             System.err.println("Ошибка при удалении урока: " + e.getMessage());
         }
     }
-
 
     private void sendPostRequest(String path, Object body) {
         String token = Main.getToken();

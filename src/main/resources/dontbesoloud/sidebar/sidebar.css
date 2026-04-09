@@ -1,40 +1,72 @@
-.sidebar {
-    -fx-background-color: #ffffff; /* Белый фон */
-    -fx-border-color: #e0e0e0;
-    -fx-border-width: 0 1 0 0; /* Только правая граница */
+.sidebar-container {
+
+    -fx-background-color: #F9FBF9;
+    -fx-border-color: transparent #E8F5E9 transparent transparent;
+    -fx-border-width: 1;
 }
 
 .sidebar-logo {
-    -fx-font-family: "UD Digi Kyokaho Std";
     -fx-font-size: 20px;
     -fx-font-weight: bold;
-    -fx-text-fill: #2c3e50;
-    -fx-alignment: center;
+    -fx-text-fill: #388E3C;
+    -fx-alignment: CENTER;
+    -fx-max-width: infinity;
 }
 
-.sidebar-button {
-    -fx-background-color: #81c784;
-    -fx-text-fill: #5f6368;
-    -fx-font-family: "UD Digi Kyokaho Std";
-    -fx-font-size: 15px;
-    -fx-padding: 12 15 12 15;
+.sidebar-nav-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #4F634F;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 12 15;
     -fx-background-radius: 8;
     -fx-cursor: hand;
 }
 
-.sidebar-button:hover {
-    -fx-background-color: #f1f3f4;
-    -fx-text-fill: #1a73e8;
+/* Эффект только при наведении мышки */
+.sidebar-nav-button:hover {
+    -fx-background-color: #E8F5E9;
+    -fx-text-fill: #2E7D32;
 }
 
-/* Стиль для активной кнопки (можно добавлять программно) */
-.sidebar-button.active {
-    -fx-background-color: #e8f0fe;
-    -fx-text-fill: #1967d2;
+/* Убираем изменение цвета при клике и фокусе */
+.sidebar-nav-button:focused,
+.sidebar-nav-button:armed {
+    -fx-background-color: transparent; /* Цвет не меняется при нажатии */
+    -fx-text-fill: #4F634F;            /* Текст остается прежним */
+    -fx-background-insets: 0;          /* Убираем дефолтную рамку фокуса */
+}
+
+/* Если хочешь, чтобы при наведении фокус тоже не подсвечивался ярко */
+.sidebar-nav-button:hover:focused {
+    -fx-background-color: #E8F5E9;
+    -fx-text-fill: #2E7D32;
+}
+
+
+/* Кнопка ВЫХОД */
+.sidebar-logout-button {
+    -fx-background-color: #FFEBEE; /* Нежно-красный фон */
+    -fx-text-fill: #D32F2F;        /* Насыщенный красный текст */
     -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-alignment: CENTER;         /* Текст выхода лучше по центру */
+    -fx-padding: 12 15;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
 }
 
-.logout-button:hover {
-    -fx-background-color: #fdeaea;
-    -fx-text-fill: #d93025;
+/* Эффект при наведении на ВЫХОД */
+.sidebar-logout-button:hover {
+    -fx-background-color: #FFCDD2; /* Чуть темнее при наведении */
+    -fx-text-fill: #B71C1C;
+}
+
+/* Убираем выделение (фокус) при клике, чтобы не "залипала" */
+.sidebar-logout-button:focused,
+.sidebar-logout-button:armed {
+    -fx-background-color: #FFEBEE;
+    -fx-text-fill: #D32F2F;
+    -fx-background-insets: 0;
 }

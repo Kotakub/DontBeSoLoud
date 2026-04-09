@@ -4,114 +4,104 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.image.ImageView?>
+
 <HBox xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="dontbesoloud.general.LessonsController"
-      stylesheets="@../main_style.css"
->
+      stylesheets="@lessons.css"
+      styleClass="lessons-root">
 
     <fx:include source="../sidebar/sidebar.fxml"/>
 
-    <BorderPane HBox.hgrow="ALWAYS">
+    <BorderPane HBox.hgrow="ALWAYS" styleClass="content-pane">
+        <padding>
+            <Insets top="20" right="20" bottom="20" left="20"/>
+        </padding>
 
         <left>
-            <VBox minWidth="200" maxWidth="200" alignment="CENTER">
+            <VBox minWidth="180" maxWidth="180" alignment="CENTER" spacing="15">
                 <Button fx:id="deleteButton" text="УДАЛИТЬ"
-                        onAction="#deleteLesson"/>
-
+                        onAction="#deleteLesson"
+                        styleClass="control-button, danger-button"/>
                 <Region VBox.vgrow="ALWAYS"/>
-
-                <Button fx:id="prevButton" text="НАЗАД" onAction="#prevLesson"/>
+                <Button fx:id="prevButton" text="НАЗАД" onAction="#prevLesson"
+                        styleClass="nav-button"/>
             </VBox>
         </left>
 
-
         <center>
-            <StackPane>
-                <GridPane fx:id="selectionLayer">
+            <StackPane styleClass="main-workspace">
+                <GridPane fx:id="selectionLayer" hgap="20" vgap="20"
+                          alignment="CENTER">
                     <columnConstraints>
-                        <ColumnConstraints hgrow="ALWAYS"
-                                           halignment="CENTER"
-                                           percentWidth="50"/> <!--text + photo-->
-                        <ColumnConstraints hgrow="ALWAYS"
-                                           halignment="CENTER"
-                                           percentWidth="50"/> <!--camera + check-->
+                        <ColumnConstraints hgrow="ALWAYS" halignment="CENTER"
+                                           percentWidth="50"/>
+                        <ColumnConstraints hgrow="ALWAYS" halignment="CENTER"
+                                           percentWidth="50"/>
                     </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints valignment="CENTER"/>
+                    </rowConstraints>
 
-                    <!--text + photo-->
                     <VBox onMouseClicked="#addTheoryLayer"
-                          GridPane.columnIndex="0"
-                          alignment="CENTER"
-                          minHeight="200"
-                    >
-                        <Label>Теория</Label>
+                          GridPane.columnIndex="0" GridPane.rowIndex="0"
+                          alignment="CENTER" styleClass="selection-card">
+                        <Label text="Теория" styleClass="selection-label"/>
                     </VBox>
 
-
-                    <!--camera + check-->
                     <VBox onMouseClicked="#addPracticeLayer"
-                          GridPane.columnIndex="1"
-                          alignment="CENTER"
-                    >
-                        <Label>Практика</Label>
+                          GridPane.columnIndex="1" GridPane.rowIndex="0"
+                          alignment="CENTER" styleClass="selection-card">
+                        <Label text="Практика" styleClass="selection-label"/>
                     </VBox>
-
                 </GridPane>
 
-
-                <VBox fx:id="theoryLayer" visible="false" managed="false"
-                      alignment="CENTER" spacing="15">
-                    <StackPane onMouseClicked="#loadPhoto"
-                               style="-fx-background-color: #ffffff; -fx-border-color: #ccc; -fx-border-style: dashed; -fx-cursor: hand;"
-                               minHeight="350" minWidth="450" maxWidth="450">
-
+                <VBox fx:id="theoryLayer"
+                      visible="false"
+                      managed="false"
+                      alignment="CENTER"
+                      spacing="20"
+                      styleClass="workspace-layer">
+                    <StackPane fx:id="photoUploadBox"
+                               onMouseClicked="#loadPhoto"
+                               styleClass="photo-upload-box">
                         <Label text="Нажмите для загрузки фото"
-                               minWidth="450" maxWidth="450"
-                               style="-fx-text-fill: #999;"/>
-
-                        <ImageView fx:id="theoryImage" fitWidth="450"/>
+                               styleClass="upload-prompt"/>
+                        <ImageView fx:id="theoryImage"
+                                   fitWidth="500"
+                                   preserveRatio="true"
+                                   styleClass="theory-image"/>
                     </StackPane>
-
-                    <TextArea fx:id="theoryText" editable="true" wrapText="true"
-                              prefWidth="300"/>
+                    <TextArea fx:id="theoryText"
+                              editable="false"
+                              wrapText="true"
+                              styleClass="theory-textarea"/>
                 </VBox>
-
 
                 <VBox fx:id="practiceLayer" visible="false" managed="false"
-                      alignment="CENTER">
-                    <ImageView fx:id="cameraView" fitHeight="350" fitWidth="500"
-                               preserveRatio="true"/>
+                      alignment="CENTER" spacing="20">
+                    <StackPane styleClass="camera-container">
+                        <ImageView fx:id="cameraView" fitHeight="350"
+                                   fitWidth="500" preserveRatio="true"/>
+                    </StackPane>
                     <HBox alignment="CENTER" spacing="10">
-                        <Label text="Распознанный жест: "
-                               style="-fx-font-size: 16px; -fx-text-fill: #2E3A2E;"/>
-                        <TextField editable="false" prefWidth="250"
-                                   style="-fx-background-radius: 10; -fx-font-weight: bold; -fx-text-fill: #388E3C; -fx-background-color: #E8F5E9;"
-                                   text="Ожидание..."/>
+                        <Label text="Распознанный жест:"
+                               styleClass="status-label"/>
+                        <TextField editable="false" prefWidth="200"
+                                   text="Ожидание..."
+                                   styleClass="gesture-field"/>
                     </HBox>
                 </VBox>
-
-                <!--            <VBox fx:id="loadPhoto" visible="false" managed="false">-->
-                <!--                <VBox>-->
-                <!--                </VBox>-->
-                <!--            </VBox>-->
-
-                <!--            <VBox fx:id="editText" visible="false" managed="false">-->
-                <!--                <VBox>-->
-                <!--                </VBox>-->
-                <!--            </VBox>-->
-
             </StackPane>
         </center>
 
-
         <right>
-            <VBox minWidth="200" maxWidth="200" alignment="CENTER">
+            <VBox minWidth="180" maxWidth="180" alignment="CENTER" spacing="15">
                 <Button fx:id="saveButton" text="СОХРАНИТЬ"
-                        onAction="#saveLesson"/>
-
+                        onAction="#saveLesson"
+                        styleClass="control-button, success-button"/>
                 <Region VBox.vgrow="ALWAYS"/>
-
-                <Button fx:id="nextButton" text="ВПЕРЕД"
-                        onAction="#nextLesson"/>
+                <Button fx:id="nextButton" text="ВПЕРЕД" onAction="#nextLesson"
+                        styleClass="nav-button"/>
             </VBox>
         </right>
     </BorderPane>

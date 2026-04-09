@@ -28,6 +28,8 @@ public class LessonsController {
     @FXML
     private ImageView cameraView, theoryImage;
     @FXML
+    private StackPane photoUploadBox;
+    @FXML
     private Button deleteButton, saveButton, nextButton, prevButton;
 
     private boolean isCameraActive = false;
@@ -50,7 +52,7 @@ public class LessonsController {
     @FXML
     private void addTheoryLayer() {
         lessonList.add(new Lesson(
-                lessonList.size() + 1,
+                -1,
                 groupId,
                 "theory",
                 "",
@@ -64,7 +66,7 @@ public class LessonsController {
     @FXML
     private void addPracticeLayer() {
         lessonList.add(new Lesson(
-                lessonList.size() + 1,
+                -1,
                 groupId,
                 "practice",
                 "",
@@ -174,6 +176,9 @@ public class LessonsController {
                 String imageUrl = selectedFile.toURI().toURL().toString();
                 Image image = new Image(imageUrl);
                 theoryImage.setImage(image);
+
+                ((Label) photoUploadBox.getChildren().get(0)).setVisible(false);
+                photoUploadBox.getStyleClass().add("has-image");
 
                 if (currentLessonIndex >= 0 && currentLessonIndex < lessonList.size()) {
                     lessonList.get(currentLessonIndex).setPhotoUrl(imageUrl);

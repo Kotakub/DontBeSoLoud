@@ -13,11 +13,11 @@ import java.util.ArrayList;
 public class GeneralController {
 
     @FXML
+    private VBox addGroupLayer;
+    @FXML
     private FlowPane groupsContainer; // Groups container
     @FXML
-    private Button addButton;
-    @FXML
-    private VBox modalOverlay;
+    private Button addGroupButton;
     @FXML
     private TextField groupNameField;
     @FXML
@@ -33,14 +33,14 @@ public class GeneralController {
         groupList = generalApiService.loadGroups();
         addGroupsToPage();
         if (Main.isAdmin()) {
-            addButton.setVisible(true);
-            addButton.setManaged(true);
+            addGroupButton.setVisible(true);
+            addGroupButton.setManaged(true);
         }
     }
 
 
     private void addGroupsToPage() {
-        groupsContainer.getChildren().removeIf(node -> node != addButton);
+        groupsContainer.getChildren().removeIf(node -> node != addGroupButton);
 
         if (groupList == null || groupList.isEmpty()) {
             System.out.println("Список групп пуст.");
@@ -81,8 +81,18 @@ public class GeneralController {
 
 
     @FXML
-    private void showGroupModal() {
-        modalOverlay.setVisible(true);
+    private void showAddGroupLayer() {
+        addGroupLayer.setVisible(true);
+        addGroupLayer.setManaged(true);
+    }
+
+    @FXML
+    private void hideAddGroupLayer() {
+        addGroupLayer.setVisible(false);
+        addGroupLayer.setManaged(false);
+        isEditMode = false;
+        groupNameField.clear();
+        groupImage.setImage(null);
     }
 
     @FXML
@@ -90,11 +100,11 @@ public class GeneralController {
         isEditMode = false;
         groupNameField.clear();
         groupImage.setImage(null);
-        showGroupModal();
+        showAddGroupLayer();
     }
 
     public void clickOnGroup() {
-        if (Main.isAdmin()) showGroupModal();
+        if (Main.isAdmin()) showAddGroupLayer();
         else goToLessons();
     }
 
@@ -112,12 +122,12 @@ public class GeneralController {
 
     @FXML
     private void deleteGroup() {
-        modalOverlay.setVisible(false);
+        hideAddGroupLayer();
     }
 
     @FXML
     private void saveGroup() {
-        modalOverlay.setVisible(false);
+        hideAddGroupLayer();
         goToLessons();
     }
 

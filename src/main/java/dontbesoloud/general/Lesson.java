@@ -50,7 +50,7 @@ public class Lesson {
 
     // Сеттеры
     public void setId(int id) {
-        if (id > 0) {
+        if (id >= -1) {
             this.id = id;
         } else {
             System.err.println("Ошибка. Некорректный id: " + id);

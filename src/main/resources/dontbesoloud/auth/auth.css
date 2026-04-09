@@ -1,72 +1,64 @@
-@font-face {
-    font-family: "UD Digi Kyokaho Std";
-    src: url("../../fonts/UDDigiKyokashoStd-Bold.otf");
-}
-
-/* Основной фон окна */
-.root {
-    -fx-background-color: #f0f2f5;
-    -fx-font-family: "UD Digi Kyokaho Std";
-}
-
-/* Контейнер VBox (форма) */
 .main-container {
-    -fx-background-color: white;
-    -fx-background-radius: 15;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 20, 0, 0, 10);
-    -fx-padding: 40;
+    -fx-background-color: #FFFFFF;
 }
 
-/* Заголовок */
-.title {
-    -fx-text-fill: #1c1e21;
+.title-label {
     -fx-font-size: 28px;
-}
-
-/* Поля ввода (TextField и PasswordField) */
-.text-field, .password-field {
-    -fx-background-color: #ffffff;
-    -fx-border-color: #dddfe2;
-    -fx-border-radius: 6;
-    -fx-background-radius: 6;
-    -fx-padding: 8 12;
-    -fx-font-size: 14px;
-    -fx-transition: all 0.2s;
-}
-
-.text-field:focused, .password-field:focused {
-    -fx-border-color: #1877f2;
-    -fx-effect: dropshadow(three-pass-box, rgba(24,119,242,0.2), 5, 0, 0, 0);
-}
-
-/* Кнопка */
-.button {
-    -fx-background-color: #42b72a;
-    -fx-text-fill: white;
     -fx-font-weight: bold;
-    -fx-font-size: 16px;
-    -fx-background-radius: 6;
-    -fx-cursor: hand;
-    -fx-padding: 10 25 10 25;
+    -fx-text-fill: #2E3A2E;
+    -fx-padding: 0 0 10 0;
 }
 
-.button:hover {
-    -fx-background-color: #36a420;
+.field-label {
+    -fx-font-size: 14px;
+    /* Используем темно-серый, он заметнее на белом */
+    -fx-text-fill: #2E3A2E;
+    -fx-font-weight: bold;
 }
 
-.button:pressed {
-    -fx-background-color: #2b9217;
-    -fx-scale-x: 0.98;
-    -fx-scale-y: 0.98;
+.custom-text-field {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #C8E6C9; /* Светло-зеленая рамка */
+    -fx-border-width: 1.5;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 10;
+    -fx-text-fill: #2E3A2E;
 }
 
-/* Ссылка (Hyperlink) */
-.hyperlink {
-    -fx-text-fill: #1877f2;
-    -fx-underline: false;
+.custom-text-field:focused {
+    -fx-border-color: #81C784; /* Акцент при нажатии */
+}
+
+/* Стили для пароля, чтобы точки не были слишком мелкими */
+.password-field {
     -fx-font-size: 14px;
 }
 
-.hyperlink:hover {
-    -fx-underline: true;
+.main-button {
+    -fx-background-color: #81C784;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 10;
+    -fx-padding: 12 0;
+    -fx-cursor: hand;
+}
+
+.main-button:hover {
+    -fx-background-color: #66BB6A;
+}
+
+.error-label {
+    -fx-text-fill: #D32F2F;
+    -fx-font-weight: bold;
+}
+
+.custom-link {
+    -fx-text-fill: #388E3C;
+    -fx-underline: false;
+}
+
+.custom-link:hover {
+    -fx-text-fill: #2E7D32;
 }

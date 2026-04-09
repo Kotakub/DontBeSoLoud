@@ -1,10 +1,112 @@
-.button{
-    -fx-background-color: white;
-    -fx-background-radius: 12;
-    -fx-border-color: #eef0f2;
-    -fx-border-radius: 12;
+/* Кнопка "Добавить курс" внутри FlowPane */
+.add-group-button {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #C8E6C9;
+    -fx-border-width: 2;
+    -fx-border-style: dashed;
+    -fx-border-radius: 15;
+    -fx-background-radius: 15;
+    -fx-min-width: 270;
+    -fx-min-height: 220;
+    -fx-text-fill: #388E3C;
+    -fx-font-weight: bold;
     -fx-cursor: hand;
-    -fx-transition: all 0.3s;
-    -fx-font-size: 28px;
+}
 
+.add-group-button:hover {
+    -fx-background-color: #F1F8E9;
+    -fx-border-color: #81C784;
+}
+
+/* Модальное окно */
+.modal-overlay {
+    -fx-background-color: rgba(0, 0, 0, 0.4);
+    -fx-alignment: CENTER;
+}
+
+.modal-window {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 20;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 20, 0, 0, 10);
+
+    -fx-min-width: 450;
+    -fx-max-width: 450;
+
+    -fx-translate-x: 0;
+    -fx-translate-y: 0;
+}
+
+.image-upload-container {
+    -fx-background-color: #F8F9FA;
+    -fx-background-radius: 15;
+    -fx-border-color: #DDDDDD;
+    -fx-border-radius: 15;
+    -fx-border-style: dashed;
+}
+
+.secondary-button {
+    -fx-background-color: white;
+    -fx-border-color: #81C784;
+    -fx-text-fill: #388E3C;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+}
+
+.custom-text-field {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #C8E6C9;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-padding: 10;
+}
+
+/* Кнопки действий */
+.confirm-button {
+    -fx-background-color: #81C784;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-padding: 10 25;
+}
+
+.cancel-button {
+    -fx-background-color: #EEEEEE;
+    -fx-text-fill: #757575;
+    -fx-background-radius: 8;
+    -fx-padding: 10 25;
+}
+
+.danger-button {
+    -fx-background-color: #FFEBEE;
+    -fx-text-fill: #D32F2F;
+    -fx-border-color: #D32F2F;
+    -fx-border-radius: 8;
+    -fx-padding: 10 25;
+}
+
+.modal-actions {
+    -fx-padding: 10 0 0 0;
+}
+
+.content-scroll, .content-scroll:focused {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+    -fx-background-color: transparent;
+    -fx-background: #FFFFFF; /* Белый фон контента */
+}
+
+/* Убираем рамку у контейнера с карточками */
+.groups-grid:focused, #groupsContainer:focused {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+/* На всякий случай для всех ScrollPane в приложении */
+.scroll-pane {
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+.scroll-pane:focused {
+    -fx-background-insets: 0;
 }

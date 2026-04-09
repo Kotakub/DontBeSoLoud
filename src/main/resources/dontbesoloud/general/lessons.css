@@ -1,0 +1,117 @@
+.lessons-root {
+    -fx-background-color: #FFFFFF;
+}
+
+.content-pane {
+    -fx-background-color: #F9FBF9;
+}
+
+/* Карточки выбора (Теория/Практика) */
+.selection-card {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #C8E6C9;
+    -fx-border-width: 2;
+    -fx-border-radius: 15;
+    -fx-background-radius: 15;
+    -fx-cursor: hand;
+    -fx-min-height: 250;
+}
+
+.selection-card:hover {
+    -fx-background-color: #F1F8E9;
+    -fx-border-color: #81C784;
+}
+
+.selection-label {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2E3A2E;
+}
+
+/* Зона загрузки фото */
+.photo-upload-box {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #CCCCCC;
+    -fx-border-style: dashed;
+    -fx-border-width: 2;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10; /* Чтобы фон не вылезал за скругление */
+    -fx-cursor: hand;
+
+    /* Убрали фиксированные размеры. Разрешаем сжиматься по контенту */
+    -fx-min-width: -1;
+    -fx-min-height: 100; /* Минимальная высота, чтобы метку было видно */
+
+    /* Добавим внутренний отступ, чтобы рамка не прилипала к фото */
+    -fx-padding: 5;
+}
+.photo-upload-box:has-image {
+     -fx-border-style: solid;
+     -fx-border-color: #81C784;
+}
+.theory-image {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 5);
+}
+
+.upload-prompt {
+    -fx-text-fill: #999999;
+    -fx-font-size: 14px;
+    -fx-padding: 20; /* Чтобы зона клика была больше, пока нет фото */
+}
+
+/* Текстовое поле теории */
+.theory-textarea {
+    -fx-max-width: 600;
+    -fx-pref-height: 150;
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #E0E0E0;
+    -fx-border-radius: 8;
+}
+
+/* Кнопки управления (Удалить, Сохранить) */
+.control-button {
+    -fx-font-weight: bold;
+    -fx-padding: 10 20;
+    -fx-background-radius: 8;
+    -fx-min-width: 140;
+}
+
+.danger-button {
+    -fx-background-color: #FFEBEE;
+    -fx-text-fill: #D32F2F;
+}
+
+.success-button {
+    -fx-background-color: #E8F5E9;
+    -fx-text-fill: #2E7D32;
+}
+
+.nav-button {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #81C784;
+    -fx-text-fill: #2E7D32;
+    -fx-font-weight: bold;
+    -fx-padding: 12 30;
+    -fx-background-radius: 8;
+}
+
+/* Практика (камера и статус) */
+.camera-container {
+    -fx-background-color: #000000;
+    -fx-background-radius: 15;
+    -fx-overflow: hidden;
+}
+
+.status-label {
+    -fx-font-size: 16px;
+    -fx-text-fill: #2E3A2E;
+    -fx-font-weight: bold;
+}
+
+.gesture-field {
+    -fx-background-color: #E8F5E9;
+    -fx-text-fill: #388E3C;
+    -fx-font-weight: bold;
+    -fx-background-radius: 10;
+    -fx-padding: 8;
+}

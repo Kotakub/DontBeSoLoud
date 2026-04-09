@@ -7,34 +7,30 @@
 <VBox fx:id="sidebarContainer"
       prefWidth="250.0"
       maxWidth="250.0"
-      spacing="10.0"
-      styleClass="sidebar"
-      stylesheets="@../main_style.css"
+      spacing="15.0"
+      styleClass="sidebar-container"
+      stylesheets="@sidebar.css"
       xmlns="http://javafx.com/javafx/17"
       xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="dontbesoloud.sidebar.SidebarController"
-      alignment="CENTER"
-
->
+      fx:controller="dontbesoloud.sidebar.SidebarController">
 
     <padding>
-        <Insets top="40.0" bottom="20.0" left="15.0" right="15.0"/>
+        <Insets top="40.0" bottom="30.0" left="20.0" right="20.0"/>
     </padding>
 
     <Label text="DontBeSoLoud" styleClass="sidebar-logo"/>
 
-    <Region VBox.vgrow="ALWAYS"/> <!--Отступ-->
+    <Region VBox.vgrow="ALWAYS"/>
 
-    <Button fx:id="btnGeneral" text="Главная" onAction="#setToGeneral"
-            maxWidth="Infinity"
-            styleClass="sidebar-button"/>
+    <Button fx:id="btnGeneral" text="ГЛАВНАЯ" onAction="#setToGeneral"
+            maxWidth="Infinity" styleClass="sidebar-nav-button"/>
 
-    <Button fx:id="btnVideo" text="Видеозвонок" onAction="#setToVideocall"
-            maxWidth="Infinity" styleClass="sidebar-button"/>
+    <Button fx:id="btnVideo" text="ВИДЕОЗВОНОК" onAction="#setToVideocall"
+            maxWidth="Infinity" styleClass="sidebar-nav-button"/>
 
-    <Region VBox.vgrow="ALWAYS"/> <!--Отступ-->
+    <Region VBox.vgrow="ALWAYS"/>
 
     <Button fx:id="btnLogout" text="ВЫХОД" onAction="#logOut"
-            maxWidth="Infinity" styleClass="sidebar-button, logout-button"/>
+            maxWidth="Infinity" styleClass="sidebar-logout-button"/>
 
 </VBox>
