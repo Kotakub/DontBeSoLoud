@@ -47,6 +47,7 @@ public class AuthController {
             isValid = true;
         }
         if (isValid) {
+            isValid = false;
             if (isRegistrationMode) {
                 String name = nameField.getText();
                 token = apiService.registration(name, email, password);
@@ -68,17 +69,16 @@ public class AuthController {
                 showError("");
             }
         }
+        
         try {
             Main.loadPage("/dontbesoloud/general/general.fxml");
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     @FXML
     private void toggleAuth() {
-        // Changing flag, registr / log in
         isRegistrationMode = !isRegistrationMode;
         updatePage();
     }

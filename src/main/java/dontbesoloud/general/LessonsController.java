@@ -31,7 +31,8 @@ public class LessonsController {
     private StackPane photoUploadBox;
     @FXML
     private Button deleteButton, saveButton, nextButton, prevButton;
-
+    @FXML
+    private TextField equalSign;
     private boolean isCameraActive = false;
 
     private List<Lesson> lessonList = new ArrayList<>();
@@ -39,6 +40,11 @@ public class LessonsController {
 
     private GeneralApiService generalApiService = new GeneralApiService();
     private int groupId;
+
+
+    private Process pythonProcess;
+    private final ZmqService zmqService = new ZmqService();
+    private String lastRecognizedSign = "None";
 
     // Page start
     @FXML
@@ -58,7 +64,7 @@ public class LessonsController {
                 "",
                 0,
                 "",
-                ""
+                "Это жест, обозначающий букву А. Чтобы его показать просто сожмите руку в кулак."
         ));
         loadPage(currentLessonIndex);
     }
@@ -79,9 +85,12 @@ public class LessonsController {
 
     private void changeLayer(String type) {
         prevButton.setDisable(currentLessonIndex < 1);
+        prevButton.setDisable(false);
         nextButton.setDisable(type.equals("selection"));
         deleteButton.setDisable(type.equals("selection"));
         saveButton.setDisable(type.equals("selection"));
+        deleteButton.setVisible(false);
+        saveButton.setVisible(false);
 
         selectionLayer.setVisible(type.equals("selection"));
         selectionLayer.setManaged(type.equals("selection"));
@@ -93,7 +102,7 @@ public class LessonsController {
         practiceLayer.setManaged(type.equals("practice"));
     }
 
-
+    // Переключение на Выбор типа занятия
     private void showSelectionLayer() {
         changeLayer("selection");
 
@@ -111,8 +120,8 @@ public class LessonsController {
     // Переключение на Камеру
     private void showPracticeLayer(Lesson lesson) {
         changeLayer("practice");
-
-        startWebcam();
+        startPythonEngine();
+//        stopPythonEngine();
     }
 
     private void loadPage(int index) {
@@ -130,10 +139,12 @@ public class LessonsController {
         }
     }
 
+
+    // Навигация
     @FXML
     private void nextLesson() {
         currentLessonIndex++;
-        if (isCameraActive) stopWebcam();
+//        if (isCameraActive) stopWebcam();
 
         loadPage(currentLessonIndex);
     }
@@ -141,7 +152,7 @@ public class LessonsController {
     @FXML
     private void prevLesson() {
         currentLessonIndex--;
-        if (isCameraActive) stopWebcam();
+//        if (isCameraActive) stopWebcam();
 
         loadPage(currentLessonIndex);
     }
@@ -153,12 +164,14 @@ public class LessonsController {
 
     @FXML
     private void deleteLesson() {
-        if (isCameraActive) stopWebcam();
+//        if (isCameraActive) stopWebcam();
         lessonList.remove(currentLessonIndex);
         currentLessonIndex--;
         loadPage(currentLessonIndex);
     }
 
+
+    // Теория
     @FXML
     private void loadPhoto() {
         FileChooser fileChooser = new FileChooser();
@@ -197,37 +210,54 @@ public class LessonsController {
     }
 
 
-    // Захват видео
-    private VideoCapture capture;
+    // Практика
 
-    private void startWebcam() {
-        this.capture = new VideoCapture(0); // 0 - id стандартной камеры
-        this.isCameraActive = true;
 
-        Runnable frameGrabber = () -> {
-            while (isCameraActive) {
-                Mat frame = new Mat();
-                if (capture.read(frame)) {
-                    // Преобразуем кадр OpenCV (Mat) в Image для JavaFX
-                    Image imageToShow = camera.mat2Image(frame);
+    private void handleData(String sign, String base64Image) {
+        // Обновляем текст, только если жест изменился
+        if (!sign.equals(lastRecognizedSign)) {
+            lastRecognizedSign = sign;
+            Platform.runLater(() -> {
+                System.out.println("Новый жест: " + sign);
 
-                    // Обновляем UI в основном потоке JavaFX
-                    Platform.runLater(() -> cameraView.setImage(imageToShow));
-                }
-            }
-        };
+            });
+            equalSign.setText("А");
+        }
 
-        Thread thread = new Thread(frameGrabber);
-        thread.setDaemon(true); // Поток закроется при выходе из приложения
-        thread.start();
-    }
-
-    public void stopWebcam() {
-        this.isCameraActive = false;
-        if (this.capture != null && this.capture.isOpened()) {
-            this.capture.release();
+        // Отрисовка кадра
+        try {
+            byte[] imageBytes = java.util.Base64.getDecoder().decode(base64Image);
+            Image img = new Image(new java.io.ByteArrayInputStream(imageBytes));
+            Platform.runLater(() -> cameraView.setImage(img));
+        } catch (Exception e) {
         }
     }
 
-}
+    private void startPythonEngine() {
+        if (pythonProcess != null && pythonProcess.isAlive()) return;
 
+        try {
+            String pythonPath = "/usr/local/bin/python3.13";
+            String scriptPath = "/Users/kotakub/Documents/DontBeSoLoud/python_ml/ml.py";
+
+            ProcessBuilder pb = new ProcessBuilder(pythonPath, scriptPath);
+            pb.redirectErrorStream(true);
+            pythonProcess = pb.start();
+
+            // Передаем данные в handleData
+            zmqService.startListening((sign, base64Image) -> {
+                handleData(sign, base64Image); // Используем твой готовый метод
+            });
+        } catch (Exception e) {
+            System.err.println("Ошибка запуска Python: " + e.getMessage());
+        }
+    }
+
+    public void stopPythonEngine() {
+        zmqService.stop();
+        if (pythonProcess != null && pythonProcess.isAlive()) {
+            pythonProcess.destroy(); // Завершаем процесс
+            System.out.println("Java: Python-движок остановлен.");
+        }
+    }
+}

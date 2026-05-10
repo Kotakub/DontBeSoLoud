@@ -2,11 +2,14 @@ module dontbesoloud {
     requires java.prefs;
     requires java.net.http;
 
+    requires Java.WebSocket;
+
     requires javafx.controls;
     requires javafx.fxml;
 
     requires org.controlsfx.controls;
     requires org.kordamp.bootstrapfx.core;
+    requires org.zeromq.jeromq;
 
     requires com.dlsc.formsfx;
     requires com.fasterxml.jackson.databind;

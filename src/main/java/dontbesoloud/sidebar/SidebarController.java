@@ -24,7 +24,7 @@ public class SidebarController {
     @FXML
     private void setToGeneral() {
         if (Main.getCurrentController() instanceof LessonsController) {
-            ((LessonsController) Main.getCurrentController()).stopWebcam();
+            ((LessonsController) Main.getCurrentController()).stopPythonEngine();
         }
         try {
             Main.loadPage("/dontbesoloud/general/general.fxml");
@@ -36,7 +36,7 @@ public class SidebarController {
     @FXML
     private void setToVideocall() {
         if (Main.getCurrentController() instanceof LessonsController) {
-            ((LessonsController) Main.getCurrentController()).stopWebcam();
+            ((LessonsController) Main.getCurrentController()).stopPythonEngine();
         }
         try {
             Main.loadPage("/dontbesoloud/videocall/videocall.fxml");

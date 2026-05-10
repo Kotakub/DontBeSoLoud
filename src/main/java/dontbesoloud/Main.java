@@ -17,7 +17,6 @@ public class Main extends Application {
     private static AuthApiService apiService = new AuthApiService();
     private static Object currentController; // Храним текущий контроллер здесь
 
-
     @Override
     public void start(Stage stg) throws IOException {
         OpenCV.loadShared();
@@ -66,7 +65,7 @@ public class Main extends Application {
 
     public static boolean isAdmin() {
         return true;
-//        return apiService.isAdmin(prefs.get("jwt_token", null));
+        // return apiService.isAdmin(prefs.get("jwt_token", null));
     }
 
     public static void main(String[] args) {

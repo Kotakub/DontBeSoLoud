@@ -72,6 +72,7 @@
                                    styleClass="theory-image"/>
                     </StackPane>
                     <TextArea fx:id="theoryText"
+                              
                               editable="false"
                               wrapText="true"
                               styleClass="theory-textarea"/>
@@ -86,8 +87,8 @@
                     <HBox alignment="CENTER" spacing="10">
                         <Label text="Распознанный жест:"
                                styleClass="status-label"/>
-                        <TextField editable="false" prefWidth="200"
-                                   text="Ожидание..."
+                        <TextField fx:id="equalSign" editable="false" prefWidth="200"
+                                   text="Выберите жест"
                                    styleClass="gesture-field"/>
                     </HBox>
                 </VBox>

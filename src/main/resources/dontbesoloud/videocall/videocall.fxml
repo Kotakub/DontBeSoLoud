@@ -11,12 +11,12 @@
     <fx:include source="../sidebar/sidebar.fxml"/>
 
     <StackPane HBox.hgrow="ALWAYS">
-        <StackPane styleClass="image-holder">
+        <VBox fx:id="searchLayer" styleClass="image-holder" alignment="CENTER">
             <ImageView fx:id="previewCamera" fitHeight="400" fitWidth="600"
-                       preserveRatio="false"/>
+            />
             <Button text="НАЧАТЬ ПОИСК" onAction="#startSearch"
                     styleClass="main-button"/>
-        </StackPane>
+        </VBox>
 
         <HBox fx:id="callLayer" visible="false" managed="false" spacing="30"
               alignment="CENTER" style="-fx-padding: 20;">
@@ -27,7 +27,7 @@
                     <Label fx:id="remotePlaceholder"
                            text="ПОИСК СОБЕСЕДНИКА..."/>
                     <ImageView fx:id="remoteCamera" fitHeight="350"
-                               fitWidth="450" preserveRatio="false"/>
+                               fitWidth="450"/>
                 </StackPane>
 
                 <HBox spacing="10" alignment="CENTER">
